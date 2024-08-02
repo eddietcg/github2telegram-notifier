@@ -14,6 +14,10 @@ module.exports = async (req, res) => {
     if ((method === "POST") && verifyWebhook.verifyWebhook(body, gh_sig_256)) {
         event.eventSwitch(gh_event, body).then((Msg) => {
             console.log("msg=", Msg);
+            if (!Msg) {
+                console.warn("msg is blank, skip send message");
+                return res.status(201).send({ status: "ok" });
+            }
             sendMsg.sendMsg(Msg)
                 .then(() => {
                     res.status(201).send({ status: "ok" });
