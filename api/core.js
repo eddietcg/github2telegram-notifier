@@ -1,5 +1,5 @@
 const event = require("../lib/eventSwitch.js");
-const sendMsg = require("../lib/sendMsg.js");
+const sendMsg = require("../lib/sendLark.js");
 const verifyWebhook = require("../lib/verifyWebhook.js");
 
 // The main, exported, function of the endpoint,
