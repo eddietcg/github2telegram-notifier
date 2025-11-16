@@ -1,5 +1,5 @@
 const event = require("../lib/eventSwitch.js");
-const sendMsg = require("../lib/sendMsg.js");
+const sendMsg = require("../lib/sendLark.js");
 const verifyWebhook = require("../lib/verifyWebhook.js");
 
 // The main, exported, function of the endpoint,
@@ -18,7 +18,15 @@ module.exports = async (req, res) => {
                 console.warn("msg is blank, skip send message");
                 return res.status(201).send({ status: "ok" });
             }
-            sendMsg.sendMsg(Msg, "-1001732184955")
+            // sendMsg.sendMsg(Msg, "-1001732184955")
+            //     .then(() => {
+            //         res.status(201).send({ status: "ok" });
+            //     })
+            //     .catch((err) => {
+            //         console.log(err);
+            //         res.status(err.response.status).send(err.response.statusText);
+            //     });
+            sendMsg.sendMsg(Msg, "shell")
                 .then(() => {
                     res.status(201).send({ status: "ok" });
                 })
