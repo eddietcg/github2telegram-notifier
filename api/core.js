@@ -18,14 +18,22 @@ module.exports = async (req, res) => {
                 console.warn("msg is blank, skip send message");
                 return res.status(201).send({ status: "ok" });
             }
-            sendMsg.sendMsg(Msg, "-1001533912882")
-                .then(() => {
-                    res.status(201).send({ status: "ok" });
-                })
-                .catch((err) => {
-                    console.log(err);
-                    res.status(err.response.status).send(err.response.statusText);
-                });
+            // sendMsg.sendMsg(Msg, "-1001533912882")
+            //     .then(() => {
+            //         res.status(201).send({ status: "ok" });
+            //     })
+            //     .catch((err) => {
+            //         console.log(err);
+            //         res.status(err.response.status).send(err.response.statusText);
+            //     });
+            sendMsg.sendMsg(Msg, "core")
+              .then(() => {
+                  res.status(201).send({ status: "ok" });
+              })
+              .catch((err) => {
+                  console.log(err);
+                  res.status(err.response.status).send(err.response.statusText);
+              });
         });
     } else {
         res.status(403).send();
